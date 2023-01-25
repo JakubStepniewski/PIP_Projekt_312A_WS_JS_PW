@@ -1,5 +1,5 @@
 package com.ztm_proj.ztm_proj.service;
-import com.ztm_proj.ztm_proj.dao.RoutesDao;
+import com.ztm_proj.ztm_proj.repository.RoutesRepository;
 import com.ztm_proj.ztm_proj.entity.Routes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class RouteService {
     @Autowired
-    RoutesDao routesDao;
+    RoutesRepository routesDao;
 
     public List<Routes> getAllRoutes() {
         return this.routesDao.findAll();

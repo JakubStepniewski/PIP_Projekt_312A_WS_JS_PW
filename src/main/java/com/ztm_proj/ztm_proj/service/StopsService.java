@@ -1,10 +1,8 @@
 package com.ztm_proj.ztm_proj.service;
 
 
-import com.ztm_proj.ztm_proj.dao.StopsDao;
-import com.ztm_proj.ztm_proj.dao.TripDao;
+import com.ztm_proj.ztm_proj.repository.StopsRepository;
 import com.ztm_proj.ztm_proj.entity.Stops;
-import com.ztm_proj.ztm_proj.entity.Trips;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,31 +13,31 @@ import java.util.Optional;
 public class StopsService {
 
     @Autowired
-    StopsDao stopsDao;
+    StopsRepository stopsRepository;
 
     public List<Stops> getAllStops() {
-        return this.stopsDao.findAll();
+        return this.stopsRepository.findAll();
     }
 
 
 
     public Stops addStops(Stops stop) {
-        return this.stopsDao.save(stop);
+        return this.stopsRepository.save(stop);
     }
 
     public Optional<Stops> getStopsById(int id) {
-        return this.stopsDao.findById(id);
+        return this.stopsRepository.findById(id);
     }
 
     public Stops updateStops(Stops trip) {
-        return this.stopsDao.save(trip);
+        return this.stopsRepository.save(trip);
     }
 
     public void deleteStopsById(int id) {
-        this.stopsDao.deleteById(id);
+        this.stopsRepository.deleteById(id);
     }
 
     public void deleteAllStops() {
-        this.stopsDao.deleteAll();
+        this.stopsRepository.deleteAll();
     }
 }
