@@ -1,13 +1,10 @@
 package com.ztm_proj.ztm_proj.controller;
 
 
-import com.ztm_proj.ztm_proj.dao.StopsDao;
 import com.ztm_proj.ztm_proj.entity.Stops;
 import com.ztm_proj.ztm_proj.service.StopsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
