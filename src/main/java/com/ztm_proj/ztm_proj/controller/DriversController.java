@@ -32,8 +32,11 @@ public class DriversController {
 
     @RequestMapping(value = "/updatedriver", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Drivers updateDrivers(@RequestBody Drivers drivers) {
-        return this.driversService.updateDrivers(drivers);
+    public Drivers updateDrivers(@RequestBody Drivers driversToUpdate) {
+        Drivers drivers = this.driversService.getDriversById(driversToUpdate.getId()).get();
+        drivers.setDriverName(driversToUpdate.getDriverName());
+        drivers.setLineId(driversToUpdate.getLineId());
+        return this.driversService.save(drivers);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

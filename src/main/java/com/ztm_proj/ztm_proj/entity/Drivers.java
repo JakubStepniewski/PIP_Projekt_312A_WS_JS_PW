@@ -1,17 +1,18 @@
 package com.ztm_proj.ztm_proj.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "DRIVERS", schema = "prog_w")
 public class Drivers {
     @Id
     @Column(name = "ID")
-    private long Id;
+    @JsonProperty("id")
+    @GeneratedValue(generator="SEQ_DRIVERS")
+    @SequenceGenerator(name="SEQ_DRIVERS",sequenceName="SEQ_DRIVERS", allocationSize=1)
+    private int Id;
 
     @Column(name = "DRIVERS_NAME")
     private String DriverName;
@@ -20,7 +21,7 @@ public class Drivers {
     private String LineId;
 
 
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
