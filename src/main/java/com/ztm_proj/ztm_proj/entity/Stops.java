@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "STOPS", schema = "prog_w")
 public class Stops {
-    private Long Id;
+    private int Id;
 
     @Column(name = "STOP_CODE")
     private Long StopCode;
@@ -32,11 +32,11 @@ public class Stops {
 
     @Id
     @Column(name = "STOP_ID")
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.Id = id;
     }
 

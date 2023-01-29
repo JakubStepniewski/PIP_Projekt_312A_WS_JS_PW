@@ -1,6 +1,7 @@
 package com.ztm_proj.ztm_proj.controller;
 
 
+import com.ztm_proj.ztm_proj.entity.Drivers;
 import com.ztm_proj.ztm_proj.entity.Stops;
 import com.ztm_proj.ztm_proj.service.StopsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,22 @@ public class StopsController {
     }
 
 
-    @RequestMapping(value = "/adduser", method = RequestMethod.POST,
+    @RequestMapping(value = "/addstop", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Stops addTrip(@RequestBody Stops stop) {
         return this.stopsService.addStops(stop);
     }
 
 
-    @RequestMapping(value = "/updateuser", method = RequestMethod.PUT,
+    @RequestMapping(value = "/updatestop", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Stops updateTrip(@RequestBody Stops stop) {
+    public Stops updateTrip(@RequestBody Stops stopToUpdate) {
+        Stops stop = this.stopsService.getStopsById(stopToUpdate.getId()).get();
+        stop.setStopCode(stopToUpdate.getStopCode());
+        stop.setStopLat(stopToUpdate.getStopLat());
+        stop.setStopLon(stopToUpdate.getStopLon());
+        stop.setStopName(stopToUpdate.getStopName());
+        stop.setZoneId(stopToUpdate.getZoneId());
         return this.stopsService.updateStops(stop);
     }
 
