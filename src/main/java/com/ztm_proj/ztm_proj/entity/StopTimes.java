@@ -19,6 +19,14 @@ public class StopTimes {
         this.Id = id;
     }
 
+    public StopTimes(int id, String tripId, String arrivalTime, int stopId, int stopSequence) {
+        Id = id;
+        TripId = tripId;
+        ArrivalTime = arrivalTime;
+        StopId = stopId;
+        StopSequence = stopSequence;
+    }
+
     @Id
     @Column(name = "ID")
     public int getId() {

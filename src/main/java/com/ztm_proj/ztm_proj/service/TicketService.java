@@ -19,16 +19,16 @@ public class TicketService {
         return this.ticketRepository.findAll();
     }
 
-    public Tickets addTickets(Tickets route) {
-        return this.ticketRepository.save(route);
+    public Tickets addTickets(Tickets ticket) {
+        return this.ticketRepository.save(ticket);
     }
 
     public Optional<Tickets> getTicketsById(int id) {
         return this.ticketRepository.findById(id);
     }
 
-    public Tickets updateTickets(Tickets trip) {
-        return this.ticketRepository.save(trip);
+    public Tickets updateTickets(Tickets ticket) {
+        return this.ticketRepository.save(ticket);
     }
 
     public void deleteTicketsById(int id) {

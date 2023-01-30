@@ -9,18 +9,27 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TICKETS", schema = "prog_w")
 public class Tickets {
-    private Long Id;
+    private int Id;
     private String TicketName;
     private String TicketType;
     private float TicketPrice;
 
-    public void setId(Long id) {
+    public Tickets(){}
+
+    public Tickets(int id, String ticketName, String ticketType, float ticketPrice) {
+        Id = id;
+        TicketName = ticketName;
+        TicketType = ticketType;
+        TicketPrice = ticketPrice;
+    }
+
+    public void setId(int id) {
         this.Id = id;
     }
 
     @Id
     @Column(name = "ID")
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
