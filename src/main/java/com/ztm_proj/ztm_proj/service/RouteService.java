@@ -1,5 +1,4 @@
 package com.ztm_proj.ztm_proj.service;
-import com.ztm_proj.ztm_proj.entity.Drivers;
 import com.ztm_proj.ztm_proj.repository.RoutesRepository;
 import com.ztm_proj.ztm_proj.entity.Routes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,10 @@ public class RouteService {
 
     public Optional<Routes> getRouteById(int id) {
         return this.routesRepository.findById(id);
+    }
+
+    public List<Routes> getRouteByRouteId(String routeId) {
+        return this.routesRepository.findByRouteId(routeId);
     }
 
     public Routes updateRoute(Routes trip) {

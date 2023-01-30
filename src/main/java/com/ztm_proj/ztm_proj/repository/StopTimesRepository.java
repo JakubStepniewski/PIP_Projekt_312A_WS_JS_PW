@@ -15,6 +15,7 @@ public interface StopTimesRepository extends JpaRepository<StopTimes, Integer> {
     @Query(value = "SELECT s FROM StopTimes s WHERE s.stopId=?1")
     List<StopTimes> findAllByStopId(int StopId);
 
+    List<StopTimes> findByTripId(String TripId);
 
     List<StopTimes> findByStopSequence(int StopSequence);
 }

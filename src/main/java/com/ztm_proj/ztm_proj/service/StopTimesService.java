@@ -26,6 +26,10 @@ public class StopTimesService {
         return this.stopTimesRepository.findByStopSequence(StopSequence);
     }
 
+    public List<StopTimes> getStopTimesByTripId(String id) {
+        return this.stopTimesRepository.findByTripId(id);
+    }
+
     public StopTimes addStopsTime(StopTimes stopTimes) {
         return this.stopTimesRepository.save(stopTimes);
     }

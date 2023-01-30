@@ -1,7 +1,5 @@
 package com.ztm_proj.ztm_proj.controller;
 
-
-import com.ztm_proj.ztm_proj.entity.Drivers;
 import com.ztm_proj.ztm_proj.entity.Routes;
 import com.ztm_proj.ztm_proj.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +18,11 @@ public class RoutesController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Routes> getAllRoute() {
         return this.routeService.getAllRoutes();
+    }
+
+    @RequestMapping(value = "/routeid/{id}", method = RequestMethod.GET)
+    public List<Routes> getAllRoute(@PathVariable String id) {
+        return this.routeService.getRouteByRouteId(id);
     }
 
 

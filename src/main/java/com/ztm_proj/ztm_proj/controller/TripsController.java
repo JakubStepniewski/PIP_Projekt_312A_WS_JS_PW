@@ -18,10 +18,9 @@ public class TripsController {
     TripService tripService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Trips> getAllUsers() {
+    public List<Trips> getAllTrip() {
         return this.tripService.getAllTrips();
     }
-
 
     @RequestMapping(value = "/addtrip", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -29,6 +28,11 @@ public class TripsController {
         return this.tripService.addTrip(trip);
     }
 
+
+    @RequestMapping(value = "/routeid/{id}", method = RequestMethod.GET)
+    public List<Trips> getAllTripByRouteId(@PathVariable String id) {
+        return this.tripService.getTripsByRouteId(id);
+    }
 
     @RequestMapping(value = "/updatetrip", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

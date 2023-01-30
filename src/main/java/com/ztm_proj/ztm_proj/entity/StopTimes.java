@@ -1,18 +1,11 @@
 package com.ztm_proj.ztm_proj.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import java.util.Set;
 
 @Entity
 @Table(name = "STOP_TIMES", schema = "prog_w")
 public class StopTimes {
-    private Long Id;
+    private int Id;
     private String TripId;
     private String ArrivalTime;
     private int StopId;
@@ -22,13 +15,13 @@ public class StopTimes {
     public StopTimes() {
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.Id = id;
     }
 
     @Id
     @Column(name = "ID")
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
