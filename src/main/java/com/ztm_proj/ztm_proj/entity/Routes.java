@@ -7,84 +7,106 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "ROUTES", schema = "prog_w")
 public class Routes {
-    private Long ID;
-    private String ROUTE_ID;
-    private String AGENCY_ID;
-    private String ROUTE_SHORT_NAME;
-    private String ROUTE_LONG_NAME;
-    private Long ROUTE_TYPE;
-    private String ROUTE_COLOR;
-    private Long ROUTE_TEXT_COLOR;
-    private Long id;
+    @Column(name = "ROUTE_ID")
+    private String routeId;
+
+    @Column(name = "AGENCY_ID")
+    private String agencyId;
+
+    @Column(name = "ROUTE_SHORT_NAME")
+    private String routeShortName;
+
+    @Column(name = "ROUTE_LONG_NAME")
+    private String routeLongName;
+
+    @Column(name = "ROUTE_TYPE")
+    private Long routeType;
+
+    @Column(name = "ROUTE_COLOR")
+    private String routeColor;
+
+    @Column(name = "ROUTE_TEXT_COLOR")
+    private Long routeTextColor;
+    private int id;
 
     public Routes() {
     }
 
+    public Routes(String routeId, String agencyId, String routeShortName, String routeLongName, Long routeType, String routeColor, Long routeTextColor, int id) {
+        this.routeId = routeId;
+        this.agencyId = agencyId;
+        this.routeShortName = routeShortName;
+        this.routeLongName = routeLongName;
+        this.routeType = routeType;
+        this.routeColor = routeColor;
+        this.routeTextColor = routeTextColor;
+        this.id = id;
+    }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Id
     @Column(name = "ID")
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public String getROUTE_ID() {
-        return ROUTE_ID;
+
+    public String getRouteId() {
+        return routeId;
     }
 
-    public void setROUTE_ID(String ROUTE_ID) {
-        this.ROUTE_ID = ROUTE_ID;
+    public void setRouteId(String routeId) {
+        this.routeId = routeId;
     }
 
-    public String getAGENCY_ID() {
-        return AGENCY_ID;
+    public String getAgencyId() {
+        return agencyId;
     }
 
-    public void setAGENCY_ID(String AGENCY_ID) {
-        this.AGENCY_ID = AGENCY_ID;
+    public void setAgencyId(String agencyId) {
+        this.agencyId = agencyId;
     }
 
-    public String getROUTE_SHORT_NAME() {
-        return ROUTE_SHORT_NAME;
+    public String getRouteShortName() {
+        return routeShortName;
     }
 
-    public void setROUTE_SHORT_NAME(String ROUTE_SHORT_NAME) {
-        this.ROUTE_SHORT_NAME = ROUTE_SHORT_NAME;
+    public void setRouteShortName(String routeShortName) {
+        this.routeShortName = routeShortName;
     }
 
-    public String getROUTE_LONG_NAME() {
-        return ROUTE_LONG_NAME;
+    public String getRouteLongName() {
+        return routeLongName;
     }
 
-    public void setROUTE_LONG_NAME(String ROUTE_LONG_NAME) {
-        this.ROUTE_LONG_NAME = ROUTE_LONG_NAME;
+    public void setRouteLongName(String routeLongName) {
+        this.routeLongName = routeLongName;
     }
 
-    public Long getROUTE_TYPE() {
-        return ROUTE_TYPE;
+    public Long getRouteType() {
+        return routeType;
     }
 
-    public void setROUTE_TYPE(Long ROUTE_TYPE) {
-        this.ROUTE_TYPE = ROUTE_TYPE;
+    public void setRouteType(Long routeType) {
+        this.routeType = routeType;
     }
 
-    public String getROUTE_COLOR() {
-        return ROUTE_COLOR;
+    public String getRouteColor() {
+        return routeColor;
     }
 
-    public void setROUTE_COLOR(String ROUTE_COLOR) {
-        this.ROUTE_COLOR = ROUTE_COLOR;
+    public void setRouteColor(String routeColor) {
+        this.routeColor = routeColor;
     }
 
-    public Long getROUTE_TEXT_COLOR() {
-        return ROUTE_TEXT_COLOR;
+    public Long getRouteTextColor() {
+        return routeTextColor;
     }
 
-    public void setROUTE_TEXT_COLOR(Long ROUTE_TEXT_COLOR) {
-        this.ROUTE_TEXT_COLOR = ROUTE_TEXT_COLOR;
+    public void setRouteTextColor(Long routeTextColor) {
+        this.routeTextColor = routeTextColor;
     }
-
 }

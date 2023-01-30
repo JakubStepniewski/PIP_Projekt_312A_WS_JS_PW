@@ -1,6 +1,5 @@
 package com.ztm_proj.ztm_proj.controller;
 
-
 import com.ztm_proj.ztm_proj.entity.Routes;
 import com.ztm_proj.ztm_proj.service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/ ")
+@RequestMapping("/routes")
 public class RoutesController {
     @Autowired
     RouteService routeService;
@@ -21,19 +20,37 @@ public class RoutesController {
         return this.routeService.getAllRoutes();
     }
 
+    @RequestMapping(value = "/routeid/{id}", method = RequestMethod.GET)
+    public List<Routes> getAllRoute(@PathVariable String id) {
+        return this.routeService.getRouteByRouteId(id);
+    }
 
-    @RequestMapping(value = "/adduser", method = RequestMethod.POST,
+
+    @RequestMapping(value = "/addroute", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Routes addRoute(@RequestBody Routes routes) {
         return this.routeService.addTrip(routes);
     }
 
-
-    @RequestMapping(value = "/updateuser", method = RequestMethod.PUT,
+    @RequestMapping(value = "/updateroute", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Routes updateRoute(@RequestBody Routes routes) {
-        return this.routeService.updateRoute(routes);
+    public Routes updateRoute(@RequestBody Routes routesToUpdate) {
+        if(this.routeService.getRouteById(routesToUpdate.getId()).isPresent()){
+            Routes routes = this.routeService.getRouteById(routesToUpdate.getId()).get();
+            routes.setRouteId(routesToUpdate.getRouteId());
+            routes.setRouteColor(routesToUpdate.getRouteColor());
+            routes.setRouteLongName(routesToUpdate.getRouteLongName());
+            routes.setRouteType(routesToUpdate.getRouteType());
+            routes.setRouteShortName(routesToUpdate.getRouteShortName());
+            routes.setAgencyId(routesToUpdate.getAgencyId());
+            routes.setRouteTextColor(routesToUpdate.getRouteTextColor());
+            return this.routeService.save(routes);
+        } else {
+            return null;
+        }
+
     }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Optional<Routes> getTrip(@PathVariable int id) {

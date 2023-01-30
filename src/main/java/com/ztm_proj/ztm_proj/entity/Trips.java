@@ -10,12 +10,33 @@ import jakarta.persistence.Table;
 @Table(name = "TRIPS", schema = "prog_w")
 public class Trips {
     private Long id;
-    private String route_id;
-    private String service_id;
-    private String trip_id;
-    private String trip_headsign;
-    private Long direction_id;
-    private Long shape_id;
+    @Column(name = "SHAPE_ID")
+    private String routeId;
+
+    @Column(name = "SERVICE_ID")
+    private String serviceId;
+
+    @Column(name = "TRIP_ID")
+    private String tripId;
+
+    @Column(name = "TRIP_HEADSIGN")
+    private String tripHeadsign;
+
+    public Trips(Long id, String routeId, String serviceId, String tripId, String tripHeadsign, Long directionId, Long shapeId) {
+        this.id = id;
+        this.routeId = routeId;
+        this.serviceId = serviceId;
+        this.tripId = tripId;
+        this.tripHeadsign = tripHeadsign;
+        this.directionId = directionId;
+        this.shapeId = shapeId;
+    }
+
+    @Column(name = "DIRECTION_ID")
+    private Long directionId;
+
+    @Column(name = "SHAPE_ID")
+    private Long shapeId;
 
     public Trips() {
         super();
@@ -33,60 +54,52 @@ public class Trips {
         return id;
     }
 
-    @Column(name = "SHAPE_ID")
-    public Long getShape_id() {
-        return shape_id;
+
+    public String getRouteId() {
+        return routeId;
     }
-    @Column(name = "SHAPE_ID")
-    public void setShape_id(Long shape_id) {
-        this.shape_id = shape_id;
+
+    public void setRouteId(String routeId) {
+        this.routeId = routeId;
     }
-    @Column(name = "DIRECTION_ID")
-    public Long getDirection_id() {
-        return direction_id;
+
+    public String getServiceId() {
+        return serviceId;
     }
-    @Column(name = "DIRECTION_ID")
-    public void setDirection_id(Long direction_id) {
-        this.direction_id = direction_id;
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
-    @Column(name = "TRIP_HEADSIGN")
-    public String getTrip_headsign() {
-        return trip_headsign;
+
+    public String getTripId() {
+        return tripId;
     }
-    @Column(name = "TRIP_HEADSIGN")
-    public void setTrip_headsign(String trip_headsign) {
-        this.trip_headsign = trip_headsign;
+
+    public void setTripId(String tripId) {
+        this.tripId = tripId;
     }
-    @Column(name = "TRIP_ID")
-    public String getTrip_id() {
-        return trip_id;
+
+    public Long getShapeId() {
+        return shapeId;
     }
-    @Column(name = "TRIP_ID")
-    public void setTrip_id(String trip_id) {
-        this.trip_id = trip_id;
+
+    public void setShapeId(Long shapeId) {
+        this.shapeId = shapeId;
     }
-    @Column(name = "SERVICE_ID")
-    public String getService_id() {
-        return service_id;
+
+    public Long getDirectionId() {
+        return directionId;
     }
-    @Column(name = "SERVICE_ID")
-    public void setService_id(String service_id) {
-        this.service_id = service_id;
+
+    public void setDirectionId(Long directionId) {
+        this.directionId = directionId;
     }
-    @Column(name = "ROUTE_ID")
-    public String getRoute_id() {
-        return route_id;
+
+    public String getTripHeadsign() {
+        return tripHeadsign;
     }
-    @Column(name = "ROUTE_ID")
-    public void setRoute_id(String route_id) {
-        this.route_id = route_id;
-    }
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", trip_headsign='" + trip_headsign + '\'' +
-                ", route_id=" + route_id +
-                '}';
+
+    public void setTripHeadsign(String tripHeadsign) {
+        this.tripHeadsign = tripHeadsign;
     }
 }

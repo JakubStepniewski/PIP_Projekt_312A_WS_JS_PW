@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "STOPS", schema = "prog_w")
 public class Stops {
-    private Long Id;
+    private int Id;
 
     @Column(name = "STOP_CODE")
     private Long StopCode;
@@ -28,15 +28,24 @@ public class Stops {
 
 
 
-    public void Stops(){}
+    public Stops(){}
 
     @Id
     @Column(name = "STOP_ID")
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(Long id) {
+    public Stops(int id, Long stopCode, String stopName, double stopLat, double stopLon, int zoneId) {
+        Id = id;
+        StopCode = stopCode;
+        StopName = stopName;
+        StopLat = stopLat;
+        StopLon = stopLon;
+        ZoneId = zoneId;
+    }
+
+    public void setId(int id) {
         this.Id = id;
     }
 

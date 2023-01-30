@@ -1,5 +1,6 @@
 package com.ztm_proj.ztm_proj.controller;
 
+import com.ztm_proj.ztm_proj.entity.Routes;
 import com.ztm_proj.ztm_proj.entity.StopTimes;
 import com.ztm_proj.ztm_proj.service.StopTimesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +21,32 @@ public class StopTimesController {
         return this.stopTimesService.getAllStopTimes();
     }
 
-    @RequestMapping(value = "/stopid/{stopid}", method = RequestMethod.GET)
-    public List<StopTimes> getStopTimesByStopId(@PathVariable int stopid) {
-        return this.stopTimesService.getStopTimesByStopSequence(stopid);
+
+    @RequestMapping(value = "/serviceid/{id}", method = RequestMethod.GET)
+    public Optional<StopTimes> getStopTimesByTripId(@PathVariable String id) {
+        return this.stopTimesService.getStopTimesByTripId(id);
     }
 
     @RequestMapping(value = "/addstoptime", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public StopTimes add(@RequestBody StopTimes stopTimes) {
+
         return this.stopTimesService.addStopsTime(stopTimes);
     }
-
-
     @RequestMapping(value = "/updatestoptime", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public StopTimes updateTrip(@RequestBody StopTimes stop) {
-        return this.stopTimesService.updateStopTimes(stop);
+    public StopTimes updateRoute(@RequestBody StopTimes stopTimesToUpdate) {
+        if(this.stopTimesService.getStopTimesById(stopTimesToUpdate.getId()).isPresent()){
+            StopTimes stoptime = this.stopTimesService.getStopTimesById(stopTimesToUpdate.getId()).get();
+            stoptime.setArrivalTime(stopTimesToUpdate.getArrivalTime());
+            stoptime.setStopId(stopTimesToUpdate.getStopId());
+            return this.stopTimesService.addStopsTime(stoptime);
+        }else{
+            return null;
+        }
+
     }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Optional<StopTimes> getStop(@PathVariable int id) {

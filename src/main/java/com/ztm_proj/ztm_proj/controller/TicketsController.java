@@ -1,6 +1,7 @@
 package com.ztm_proj.ztm_proj.controller;
 
 import com.ztm_proj.ztm_proj.entity.Routes;
+import com.ztm_proj.ztm_proj.entity.StopTimes;
 import com.ztm_proj.ztm_proj.entity.Tickets;
 import com.ztm_proj.ztm_proj.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,16 @@ public class TicketsController {
 
     @RequestMapping(value = "/updateticket", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Tickets updateTicketse(@RequestBody Tickets tickets) {
-        return this.ticketService.updateTickets(tickets);
+    public Tickets updateTicketse(@RequestBody Tickets ticketsUpdate) {
+        if(this.ticketService.getTicketsById(ticketsUpdate.getId()).isPresent()){
+            Tickets tickets = this.ticketService.getTicketsById(ticketsUpdate.getId()).get();
+            tickets.setTicketName(ticketsUpdate.getTicketName());
+            tickets.setTicketType(ticketsUpdate.getTicketType());
+            tickets.setTicketPrice(ticketsUpdate.getTicketPrice());
+            return this.ticketService.updateTickets(tickets);
+        }else{
+            return null;
+        }
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
