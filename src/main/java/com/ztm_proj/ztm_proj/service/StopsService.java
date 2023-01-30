@@ -29,8 +29,8 @@ public class StopsService {
         return this.stopsRepository.findById(id);
     }
 
-    public Stops updateStops(Stops trip) {
-        return this.stopsRepository.save(trip);
+    public Stops updateStops(Stops stop) {
+        return this.stopsRepository.save(stop);
     }
 
     public void deleteStopsById(int id) {
@@ -40,4 +40,5 @@ public class StopsService {
     public void deleteAllStops() {
         this.stopsRepository.deleteAll();
     }
+
 }

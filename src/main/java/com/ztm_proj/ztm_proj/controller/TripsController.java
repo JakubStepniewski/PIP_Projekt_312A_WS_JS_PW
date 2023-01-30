@@ -18,19 +18,23 @@ public class TripsController {
     TripService tripService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Trips> getAllUsers() {
+    public List<Trips> getAllTrip() {
         return this.tripService.getAllTrips();
     }
 
-
-    @RequestMapping(value = "/adduser", method = RequestMethod.POST,
+    @RequestMapping(value = "/addtrip", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Trips addTrip(@RequestBody Trips trip) {
         return this.tripService.addTrip(trip);
     }
 
 
-    @RequestMapping(value = "/updateuser", method = RequestMethod.PUT,
+    @RequestMapping(value = "/routeid/{id}", method = RequestMethod.GET)
+    public List<Trips> getAllTripByRouteId(@PathVariable String id) {
+        return this.tripService.getTripsByRouteId(id);
+    }
+
+    @RequestMapping(value = "/updatetrip", method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Trips updateTrip(@RequestBody Trips trip) {
         return this.tripService.updateTrip(trip);
@@ -51,26 +55,8 @@ public class TripsController {
         this.tripService.deleteTripsById(id);
     }
 
-    @Autowired
-    MessageSource messageSource;
-
-    @RequestMapping(value = "/get-greeting", method = RequestMethod.GET)
-    public String greeting() {
-        /**
-         *   @LocaleContextHolder.getLocale()
-         *  Return the Locale associated with the given user context,if any, or the system default Locale otherwise.
-         *  This is effectively a replacement for Locale.getDefault(), able to optionally respect a user-level Locale setting.
-         */
-
-        return messageSource.getMessage("good.morning", null, LocaleContextHolder.getLocale());
-    }
 
 
-    @RequestMapping(value = "/get-greeting-name", method = RequestMethod.GET)
-    public String greetingWithName() {
-        String[] params = new String[]{"Ikhiloya", "today"};
-        return messageSource.getMessage("good.morning.name", params, LocaleContextHolder.getLocale());
-    }
 
 
 }

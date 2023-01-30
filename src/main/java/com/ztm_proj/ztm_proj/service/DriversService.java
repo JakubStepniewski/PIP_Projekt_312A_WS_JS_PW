@@ -36,4 +36,8 @@ public class DriversService {
     public void deleteAllDrivers() {
         this.driversRepository.deleteAll();
     }
+
+    public Drivers save(Drivers drivers) {
+        return this.driversRepository.save(drivers);
+    }
 }

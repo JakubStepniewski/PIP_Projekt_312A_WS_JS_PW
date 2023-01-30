@@ -10,29 +10,37 @@ import java.util.Optional;
 @Service
 public class RouteService {
     @Autowired
-    RoutesRepository routesDao;
+    RoutesRepository routesRepository;
 
     public List<Routes> getAllRoutes() {
-        return this.routesDao.findAll();
+        return this.routesRepository.findAll();
     }
 
     public Routes addTrip(Routes route) {
-        return this.routesDao.save(route);
+        return this.routesRepository.save(route);
     }
 
     public Optional<Routes> getRouteById(int id) {
-        return this.routesDao.findById(id);
+        return this.routesRepository.findById(id);
+    }
+
+    public List<Routes> getRouteByRouteId(String routeId) {
+        return this.routesRepository.findByRouteId(routeId);
     }
 
     public Routes updateRoute(Routes trip) {
-        return this.routesDao.save(trip);
+        return this.routesRepository.save(trip);
     }
 
     public void deleteTripsById(int id) {
-        this.routesDao.deleteById(id);
+        this.routesRepository.deleteById(id);
     }
 
     public void deleteAllRoutes() {
-        this.routesDao.deleteAll();
+        this.routesRepository.deleteAll();
+    }
+
+    public Routes save(Routes routes) {
+        return this.routesRepository.save(routes);
     }
 }
