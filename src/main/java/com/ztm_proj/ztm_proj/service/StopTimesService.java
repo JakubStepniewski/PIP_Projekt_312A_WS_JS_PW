@@ -22,9 +22,6 @@ public class StopTimesService {
         return this.stopTimesRepository.findAllByStopId(stopId);
     }
 
-    public List<StopTimes> getStopTimesByStopSequence(int StopSequence) {
-        return this.stopTimesRepository.findByStopSequence(StopSequence);
-    }
 
     public Optional<StopTimes> getStopTimesByTripId(String id) {
         return this.stopTimesRepository.findByTripId(id);

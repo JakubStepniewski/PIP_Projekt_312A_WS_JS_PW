@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -15,7 +16,7 @@ public interface StopTimesRepository extends JpaRepository<StopTimes, Integer> {
     @Query(value = "SELECT s FROM StopTimes s WHERE s.stopId=?1")
     List<StopTimes> findAllByStopId(int StopId);
 
-    List<StopTimes> findByTripId(String TripId);
+    Optional <StopTimes> findByTripId(String TripId);
 
     List<StopTimes> findByStopSequence(int StopSequence);
 }
