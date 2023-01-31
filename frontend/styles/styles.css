@@ -1,0 +1,35 @@
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+/* Set the size of the div element that contains the map */
+#map {
+    height: 400px; /* The height is 400 pixels */
+    width: 100%; /* The width is the width of the web page */
+  }
+button {
+  background-color: #084C8A!important;
+  border: 0!important;
+  border-radius: 0!important;
+  margin-top: 10px;
+
+}
+button i
+{
+  margin-right: 10px;
+}
+table button
+{
+  margin-top: 0px;
+}
+
+.save-btn, input{
+  display: none;
+  margin: auto;
+}
+
+table tr:hover
+{
+  background-color: rgb(245,246,247);
+}
